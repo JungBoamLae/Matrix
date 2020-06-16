@@ -1,0 +1,37 @@
+import pandas as pd
+import numpy as np
+np.random.seed(12345)
+import matplotlib.pyplot as plt
+plt.rc('figure', figsize=(10, 6))
+PREVIOUS_MAX_ROWS = pd.options.display.max_rows
+pd.options.display.max_rows = 20
+np.set_printoptions(precision=4, suppress=True)
+
+data = {'state': ['Ohio', 'Ohio', 'Ohio', 'Nevada', 'Nevada', 'Nevada'],
+        'year': [2000, 2001, 2002, 2001, 2002, 2003],
+        'pop': [1.5, 1.7, 3.6, 2.4, 2.9, 3.2]}
+
+#인덱스 정보
+index_info = ['one','two','three','four','five','six']
+
+frame1 = pd.DataFrame(data , index = index_info)
+frame2 = frame1[frame1['pop'] < 3.5] #pop 값 따로 출력
+
+frame3 = frame2[frame2['pop'] < 2]
+#print(frame3)
+print(frame3['pop'] + 1)
+
+print('-------------------------')
+
+frame4 = frame2[frame2['pop'] > 2]
+#print(frame3)
+print(frame4['pop'] + 2)
+
+'''
+1. data를 이용해가지고 DataFrame을 생성. index 정보는 '참고' 데이터 이용
+2. 'pop' 3.5보다 큰값이 있는 row는 제거.
+3. 'pop' 2보다 작으면 + 1 하여서 Series 형태로 프린트
+4. 'pop' 2보다 크면 + 2 Series 형태로 프린트. 
+#인덱스 정보
+참고 = ['one','two','three','four','five','six']
+'''
