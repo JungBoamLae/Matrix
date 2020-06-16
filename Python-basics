@@ -1,0 +1,20 @@
+import numpy as np
+
+name = np.array(['John', 'Mike', 'Sarah', 'Kate', 'Samuel'])
+score = np.array([78, 95, 84, 98, 88])
+
+return_index = np.argsort(score)
+return_score = np.sort(score)
+
+print(return_index)
+print(name[return_index])
+
+'''
+['John', 'Mike', 'Sarah', 'Kate', 'Samuel']
+[78, 95, 84, 98, 88]
+
+1. 시험점수를 오름차순으로 sort
+2. 시험성적에 해당하는 사람의 이름이 매칭되게 sort
+
+힌트. argsort
+'''
