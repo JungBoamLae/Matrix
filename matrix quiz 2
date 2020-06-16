@@ -1,0 +1,22 @@
+import pandas as pd
+import numpy as np
+from numpy import nan as NA
+
+data = pd.DataFrame([[1., 6.5, 3.], [1., NA, NA],
+                     [NA, NA, NA],[NA, NA, NA],[NA, NA, NA], [NA, NA, 3.], [NA, 2, 3.]])
+
+print(data)
+'''
+data = data.fillna({0:1}, limit = 2)
+data = data.fillna({1:6.5}, limit = 3)
+data = data.fillna({2:3.0}, limit = 3)
+'''
+
+data[0] = data[0].fillna(method='ffill' , limit = 2)
+data[1] = data[1].fillna(method='ffill' , limit = 3)
+data[2] = data[2].fillna(method='ffill' , limit = 3)
+print(data)
+print('--------------------')
+
+
+print(data.dropna(thresh = 2))
