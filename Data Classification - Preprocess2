@@ -1,0 +1,31 @@
+import pandas as pd
+import numpy as np
+from numpy import nan as NA
+
+data = pd.DataFrame({'food': ['bacon', 'pulled pork', 'bacon',
+                              'Pastrami', 'corned beef', 'Bacon',
+                              'pastrami', 'honey ham', 'nova lox'],
+                     'ounces': [4, 3, 12, 6, 7.5, 8, 3, 5, 6]})
+
+meat_to_animal = {
+  'BACON': '1',
+  'PULLED PORK': '2',
+  'PASTRAMI': '3',
+  'CORNED BEEF': '4',
+  'HONEY HAM': '5',
+  'NOVA LOX': '6'
+}
+
+data['food'] = data['food'].str.upper()
+
+data['number'] = data['food'].map(meat_to_animal)
+
+data = data.replace(['BACON','PASTRAMI'],['pig','pasta'])
+print(data)
+
+'''
+1. 'food' column 데이터 대문자로 변환
+2. 'food' column element 카테고리별로 정리할 수있는 딕셔너리 생성
+3. 해당 맵핑용 딕셔너리 변수 이용하여서 column 생성 'number'
+4. BACON -> pig , PASTRAMI -> pasta (replace)
+'''
